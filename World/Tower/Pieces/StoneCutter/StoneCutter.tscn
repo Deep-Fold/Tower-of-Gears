@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://World/Tower/Pieces/ProducePiece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Tower/Pieces/StoneCutter/stonecutter.png" type="Texture" id=2]
+[ext_resource path="res://World/Tower/Pieces/StoneCutter/StoneCutter.gd" type="Script" id=3]
+[ext_resource path="res://World/Tower/Pieces/StoneCutter/saw.png" type="Texture" id=4]
+[ext_resource path="res://World/Tower/Pieces/StoneCutter/stonecutter.wav" type="AudioStream" id=5]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.740741, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 8, 8, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 10.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.6
+angular_velocity = 113.68
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 2 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="Animation" id=4]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Saw2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Saw3:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="StoneCutter" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+sprite_rotate = true
+produce_steps = [ true, false, false, false, true, false, false, true ]
+heat_increase = 0.004
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="Saw2" type="Sprite" parent="." index="1"]
+position = Vector2( 0, 8 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Saw3" type="Sprite" parent="." index="2"]
+position = Vector2( 16, 8 )
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="Embers" parent="." index="5"]
+amount = 300
+process_material = SubResource( 3 )
+
+[node name="Audio" parent="." index="8"]
+stream = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+anims/saw = SubResource( 4 )
+
+[node name="HeatGlow" parent="." index="10"]
+z_index = 50

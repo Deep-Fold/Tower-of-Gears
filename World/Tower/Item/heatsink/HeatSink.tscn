@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://World/Tower/Item/Item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Tower/Item/heatsink/HeatSink.gd" type="Script" id=2]
+[ext_resource path="res://World/Tower/Pieces/heat-glow.png" type="Texture" id=3]
+[ext_resource path="res://World/Tower/Item/heatsink/heatsink.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 40 )
+
+[node name="HeatSink" groups=[
+"heatsink",
+"machine_piece",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 4 )
+
+[node name="PieceDetector" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PieceDetector" index="0"]
+position = Vector2( 8, 8 )
+shape = SubResource( 1 )
+
+[node name="Glow" type="Sprite" parent="." index="4"]
+modulate = Color( 0.333333, 0.658824, 0.580392, 0 )
+position = Vector2( 8, 8 )
+texture = ExtResource( 3 )
+[connection signal="area_entered" from="PieceDetector" to="." method="_on_PieceDetector_area_entered"]
+[connection signal="area_exited" from="PieceDetector" to="." method="_on_PieceDetector_area_exited"]

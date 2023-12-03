@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/selectivegold.wav-cd644820202de5c5a8f4e58ff04aa220.sample"
+
+[deps]
+
+source_file="res://World/Tower/Pieces/Selective/selectivegold.wav"
+dest_files=[ "res://.import/selectivegold.wav-cd644820202de5c5a8f4e58ff04aa220.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

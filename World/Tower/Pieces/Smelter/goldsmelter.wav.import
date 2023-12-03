@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/goldsmelter.wav-f663defe600c3aaa1b9c8d23e2d4ce82.sample"
+
+[deps]
+
+source_file="res://World/Tower/Pieces/Smelter/goldsmelter.wav"
+dest_files=[ "res://.import/goldsmelter.wav-f663defe600c3aaa1b9c8d23e2d4ce82.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

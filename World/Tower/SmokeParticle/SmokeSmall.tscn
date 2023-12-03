@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Tower/SmokeParticle/Smoke.tres" type="Material" id=1]
+[ext_resource path="res://World/Tower/SmokeParticle/Smoke.gd" type="Script" id=2]
+[ext_resource path="res://World/Tower/SmokeParticle/smoke-small.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="SmokeSmall" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+material = SubResource( 1 )
+emitting = false
+amount = 1
+lifetime = 10.0
+one_shot = true
+process_material = ExtResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

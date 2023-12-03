@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/joiner.wav-c251e3e4d93303987b056e728a887406.sample"
+
+[deps]
+
+source_file="res://World/Tower/Pieces/Joiner/joiner.wav"
+dest_files=[ "res://.import/joiner.wav-c251e3e4d93303987b056e728a887406.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

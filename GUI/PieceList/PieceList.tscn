@@ -1,0 +1,159 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://GUI/PieceList/PieceList.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Theme/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://GUI/expand-arrow.png" type="Texture" id=3]
+[ext_resource path="res://GUI/collapse-arrow.png" type="Texture" id=4]
+[ext_resource path="res://GUI/PieceList/ToolTip.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "expand"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Toggle:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 224, 288 ), Vector2( 128, 288 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Toggle/TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 272, 0 ), Vector2( 176, 0 ) ]
+}
+
+[node name="PieceList" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 272.0
+margin_right = 368.0
+margin_bottom = 320.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.321569, 0.235294, 0.305882, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/ScrollContainer"]
+margin_right = 96.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Toggle" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 224.0
+margin_top = -32.0
+margin_right = 272.0
+margin_bottom = -15.9999
+theme = ExtResource( 2 )
+text = "Build"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Toggle"]
+margin_left = -8.0
+margin_right = 8.0
+margin_bottom = 16.0
+texture = ExtResource( 3 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/expand = SubResource( 1 )
+
+[node name="ToolTip" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -160.0
+margin_bottom = -320.0
+rect_min_size = Vector2( 80, 0 )
+mouse_filter = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="ToolTip" groups=[
+"header",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 100.0
+mouse_filter = 2
+size_flags_horizontal = 3
+color = Color( 0.164706, 0.164706, 0.227451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="ToolTip" groups=[
+"header",
+]]
+margin_left = 4.0
+margin_right = 108.0
+margin_bottom = 9.0
+theme = ExtResource( 2 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ToolTip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Toggle" to="." method="_on_Toggle_pressed"]

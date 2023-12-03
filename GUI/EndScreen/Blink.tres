@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 color1 : hint_color;
+uniform vec4 color2 : hint_color;
+
+uniform float interval = 0.4;
+
+void fragment() {
+	float a = texture(TEXTURE, UV).a;
+	vec3 col = color1.rgb;
+	
+	if (mod(TIME, interval) > interval*0.5) {
+		col = color2.rgb;
+	}
+	
+	COLOR = vec4(col, a);
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/color1 = Color( 1, 0.972549, 0.752941, 1 )
+shader_param/color2 = Color( 0.501961, 0.67451, 0.25098, 1 )
+shader_param/interval = 0.4

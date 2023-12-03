@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/selectivestone.wav-f07106e9285adb9f6b1265b460421cf3.sample"
+
+[deps]
+
+source_file="res://World/Tower/Pieces/Selective/selectivestone.wav"
+dest_files=[ "res://.import/selectivestone.wav-f07106e9285adb9f6b1265b460421cf3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

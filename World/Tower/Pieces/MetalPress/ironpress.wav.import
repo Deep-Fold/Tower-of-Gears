@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ironpress.wav-c2863a37ef92775307c90b8127008638.sample"
+
+[deps]
+
+source_file="res://World/Tower/Pieces/MetalPress/ironpress.wav"
+dest_files=[ "res://.import/ironpress.wav-c2863a37ef92775307c90b8127008638.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

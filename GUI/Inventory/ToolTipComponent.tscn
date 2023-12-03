@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://World/Tower/Item/stone.png" type="Texture" id=2]
+
+[node name="ToolTipComponent" type="ColorRect"]
+margin_right = 62.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+mouse_filter = 2
+color = Color( 0.164706, 0.164706, 0.227451, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+
+[node name="Item" type="Label" parent="HBoxContainer"]
+margin_left = 20.0
+margin_top = 3.0
+margin_right = 41.0
+margin_bottom = 12.0
+theme = ExtResource( 1 )
+text = "test"
+
+[node name="Amount" type="Label" parent="HBoxContainer"]
+margin_left = 45.0
+margin_top = 3.0
+margin_right = 62.0
+margin_bottom = 12.0
+theme = ExtResource( 1 )
+text = "123"

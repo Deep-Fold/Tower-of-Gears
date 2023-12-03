@@ -1,0 +1,227 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GUI/Inventory/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Theme/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://GUI/expand-arrow.png" type="Texture" id=3]
+[ext_resource path="res://GUI/collapse-arrow.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "expand"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 272, 0 ), Vector2( 48, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Toggle:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 224, 272 ), Vector2( 0, 272 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Toggle/TextureRect:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Toggle/TextureRect:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, 0 ), Vector2( 24, 0 ) ]
+}
+
+[node name="Inventory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 272.0
+margin_right = 224.0
+mouse_filter = 2
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+margin_right = 111.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+color = Color( 0.321569, 0.235294, 0.305882, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InventoryList" type="VBoxContainer" parent="HBoxContainer/ColorRect/ScrollContainer"]
+margin_right = 111.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/ScrollContainer/InventoryList" groups=[
+"header",
+]]
+margin_right = 111.0
+margin_bottom = 33.0
+theme = ExtResource( 2 )
+text = "
+Inventory
+"
+align = 1
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/ColorRect/ScrollContainer/InventoryList" groups=[
+"header",
+]]
+margin_top = 33.0
+margin_right = 111.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 1 )
+color = Color( 0.164706, 0.164706, 0.227451, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer"]
+margin_left = 111.0
+margin_right = 112.0
+margin_bottom = 320.0
+rect_min_size = Vector2( 1, 0 )
+color = Color( 0.164706, 0.164706, 0.227451, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
+margin_left = 112.0
+margin_right = 224.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+color = Color( 0.321569, 0.235294, 0.305882, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExportList" type="VBoxContainer" parent="HBoxContainer/ColorRect2/ScrollContainer"]
+margin_right = 112.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect2/ScrollContainer/ExportList" groups=[
+"header",
+]]
+margin_right = 112.0
+margin_bottom = 21.0
+theme = ExtResource( 2 )
+text = "
+Required"
+align = 1
+
+[node name="TimeLeft" type="Label" parent="HBoxContainer/ColorRect2/ScrollContainer/ExportList" groups=[
+"header",
+]]
+margin_top = 21.0
+margin_right = 112.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 12 )
+theme = ExtResource( 2 )
+text = "120 seconds"
+align = 1
+valign = 2
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/ColorRect2/ScrollContainer/ExportList" groups=[
+"header",
+]]
+margin_top = 33.0
+margin_right = 112.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 1 )
+color = Color( 0.164706, 0.164706, 0.227451, 1 )
+
+[node name="EarlyExport" type="Button" parent="HBoxContainer/ColorRect2/ScrollContainer/ExportList" groups=[
+"header",
+]]
+margin_top = 34.0
+margin_right = 112.0
+margin_bottom = 45.0
+theme = ExtResource( 2 )
+text = "Early Export"
+
+[node name="Toggle" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -48.0
+margin_top = -48.0
+margin_bottom = -32.0
+theme = ExtResource( 2 )
+text = "Items"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Toggle"]
+margin_left = -8.0
+margin_right = 8.0
+margin_bottom = 16.0
+texture = ExtResource( 3 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/expand = SubResource( 1 )
+[connection signal="pressed" from="HBoxContainer/ColorRect2/ScrollContainer/ExportList/EarlyExport" to="." method="_on_EarlyExport_pressed"]
+[connection signal="pressed" from="Toggle" to="." method="_on_Toggle_pressed"]
+[connection signal="toggled" from="Toggle" to="." method="_on_Toggle_toggled"]

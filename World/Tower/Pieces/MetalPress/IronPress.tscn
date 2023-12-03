@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://World/Tower/Pieces/MetalPress/metal-press-presser.png" type="Texture" id=1]
+[ext_resource path="res://World/Tower/Pieces/MetalPress/metal-press.png" type="Texture" id=2]
+[ext_resource path="res://World/Tower/Pieces/MetalPress/metal-press-frame.png" type="Texture" id=3]
+[ext_resource path="res://World/Tower/Pieces/InputOutputPiece.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Tower/Pieces/MetalPress/IronPress.gd" type="Script" id=5]
+[ext_resource path="res://World/Tower/Pieces/MetalPress/ironpress.wav" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "press"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("PressUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PressDown:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ), Vector2( 0, 10 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "release"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("PressUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 6 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PressDown:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ), Vector2( 0, 16 ) ]
+}
+
+[node name="IronPress" instance=ExtResource( 4 )]
+script = ExtResource( 5 )
+produce_steps = [ false, false, true, false, false, false, true, false ]
+heat_increase = 0.005
+
+[node name="Sprite" parent="." index="0"]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="Audio" parent="." index="6"]
+stream = ExtResource( 6 )
+
+[node name="Frame" type="Sprite" parent="." index="7"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="PressUp" type="Sprite" parent="." index="8"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="PressDown" type="Sprite" parent="." index="9"]
+position = Vector2( 0, 16 )
+scale = Vector2( 1, -1 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
+anims/press = SubResource( 1 )
+anims/release = SubResource( 2 )
+
+[node name="PlayRelease" type="Timer" parent="." index="11"]
+wait_time = 0.2
+one_shot = true
+
+[node name="HeatGlow" parent="." index="12"]
+z_index = 0
+[connection signal="timeout" from="PlayRelease" to="." method="_on_PlayRelease_timeout"]

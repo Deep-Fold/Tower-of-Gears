@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Tower/Pieces/ProducePiece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Tower/Pieces/Selective/SelectiveIron.gd" type="Script" id=2]
+[ext_resource path="res://World/Tower/Pieces/Selective/selective-iron.png" type="Texture" id=3]
+[ext_resource path="res://World/Tower/Pieces/Selective/selectiveiron.wav" type="AudioStream" id=4]
+
+[node name="SelectiveIron" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+sprite_rotate = true
+heat_increase = 0.001
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="Audio" parent="." index="6"]
+stream = ExtResource( 4 )

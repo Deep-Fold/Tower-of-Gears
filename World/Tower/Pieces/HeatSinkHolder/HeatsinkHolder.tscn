@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://World/Tower/Pieces/InputOutputPiece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Tower/Pieces/HeatSinkHolder/HeatsinkHolder.gd" type="Script" id=2]
+[ext_resource path="res://World/Tower/Pieces/HeatSinkHolder/heatsink-holder.png" type="Texture" id=3]
+[ext_resource path="res://World/Tower/Pieces/HeatSinkHolder/heatsinkejector.wav" type="AudioStream" id=4]
+
+[node name="HeatsinkHolder" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+produce_steps = [ true, false, true, false, true, false, true, false ]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="Audio" parent="." index="6"]
+stream = ExtResource( 4 )

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://World/Tower/Pieces/ProducePiece.gd" type="Script" id=1]
+[ext_resource path="res://World/Tower/Pieces/InputOutputPiece.tscn" type="PackedScene" id=2]
+
+[node name="ProducePiece" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+sprite_rotate = false
+
+[node name="HeatGlow" parent="." index="7"]
+z_index = -1

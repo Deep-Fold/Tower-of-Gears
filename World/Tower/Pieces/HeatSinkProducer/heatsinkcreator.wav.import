@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/heatsinkcreator.wav-b2e7b59bd9e78bd2f2c637b9fc41635c.sample"
+
+[deps]
+
+source_file="res://World/Tower/Pieces/HeatSinkProducer/heatsinkcreator.wav"
+dest_files=[ "res://.import/heatsinkcreator.wav-b2e7b59bd9e78bd2f2c637b9fc41635c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

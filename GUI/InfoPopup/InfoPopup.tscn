@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GUI/Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://GUI/InfoPopup/InfoPopup.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "popup"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Border:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 320 ), Vector2( 0, 288 ) ]
+}
+
+[node name="InfoPopup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 32.0
+color = Color( 0.321569, 0.235294, 0.305882, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inner" type="ColorRect" parent="Border"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -28.0
+margin_right = -4.0
+margin_bottom = -4.0
+color = Color( 0.517647, 0.329412, 0.360784, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Border/Inner"]
+modulate = Color( 1, 0.972549, 0.752941, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 2.0
+margin_right = -4.0
+margin_bottom = -2.0
+theme = ExtResource( 1 )
+text = "blah blah blah"
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/popup = SubResource( 1 )
+
+[node name="RevealFrequency" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+[connection signal="gui_input" from="Border/Inner" to="." method="_on_Inner_gui_input"]
+[connection signal="gui_input" from="Border/Inner/Label" to="." method="_on_Label_gui_input"]
+[connection signal="timeout" from="RevealFrequency" to="." method="_on_RevealFrequency_timeout"]
